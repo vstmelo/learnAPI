@@ -57,17 +57,31 @@ app.put('/products/:id', (req, res) => {
     const product = products.find(
         (product) => product.id === Number(req.params.id)
     );
-    if(product){
+    if (product) {
         product.name = req.body.name;
         product.price = req.body.price;
         res.json(product);
 
-    }else{
+    } else {
         const newProduct = req.body;
         products.push(newProduct);
         res.json(newProduct);
 
     }
 });
+app.delete('/products/:id', (req, res){
+    const product = products.find(
+        (product) => product.id === Number(req.params.id)
+    );
+
+    // search the element and say what position here is
+    const index = products.indexOf(product);
+    
+    // remove element
+    products.splice(index);
+    
+    res.json(product);
+});
+
 
 module.exports = routes;

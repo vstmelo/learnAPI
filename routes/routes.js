@@ -76,10 +76,10 @@ app.delete('/products/:id', (req, res){
 
     // search the element and say what position here is
     const index = products.indexOf(product);
-    
+
     // remove element
-    products.splice(index);
-    
+    products.splice(index, 1);
+
     res.json(product);
 });
 
